@@ -6,8 +6,9 @@ This is a port of Piotr Murach's [TTY::Screen](https://github.com/piotrmurach/tt
 
 ## Try it out
 
-Prerequisites:
-OS: MacOS or Linux, clang, and ruby.
+#### Prerequisites:
+
+MacOS or Linux, clang, and ruby.
 1. `rake compile` to compile mruby
 2. `mruby/bin/mirb` to start the mruby interactive shell
 3. Try the commands in the usage section
