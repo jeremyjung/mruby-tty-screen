@@ -76,7 +76,9 @@ All require statements were removed as mruby is compiled.
 
 Fiddle code was changed to native C as mruby does not include fiddle.
 
-Remove dependencies on mruby-io-console (sys/wait.h does not exist) and mruby-process (sys/ioctl.h does not exist) on windows. 
+Removed references to SystemCallError which do not exist in the mruby-process gem.
+
+Remove dependencies on mruby-io-console (sys/wait.h does not exist) and mruby-process (sys/ioctl.h does not exist) on windows.
 
 ## Contributing
 
