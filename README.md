@@ -56,6 +56,9 @@ Windows does not include any of the mruby dependencies (ruby, gcc, bison) so the
 3.  After installation is complete, open a terminal and go to the mruby-tty-screen directory
 4.  Run `ridk enable`
 5.  Run `pacman -S bison`
+6.  Run `rake compile`
+
+Note that any time you open a terminal, you must run `ridk enable` before attempting to run `rake compile` in Windows or the compilation will fail.
 
 ## Why weren't tests ported?
 
@@ -72,6 +75,8 @@ Keyword arguments are unsupported in mruby so they were changed to a hash parame
 All require statements were removed as mruby is compiled.
 
 Fiddle code was changed to native C as mruby does not include fiddle.
+
+Remove dependencies on mruby-io-console (sys/wait.h does not exist) and mruby-process (sys/ioctl.h does not exist) on windows. 
 
 ## Contributing
 
