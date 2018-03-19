@@ -6,22 +6,23 @@
   #include <windows.h>
   #include <stdio.h>
   #include <conio.h>
-
-  HANDLE stdoutHandle;
 #endif
 
 static mrb_value mrb_size_from_win_api(mrb_state* mrb, mrb_value self) {
   #ifdef _WIN32
-    CONSOLE_SCREEN_BUFFER_INFO cBuffer;
-    SMALL_RECT wSize;
+    HANDLE stdoutHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO c_buffer;
+    SMALL_RECT w_size;
 
-    if (!GetConsoleScreenBufferInfo(stdoutHandle, &cBuffer)) {
+    if (!GetConsoleScreenBufferInfo(stdoutHandle, &c_buffer)) {
       return mrb_nil_value();
     }
 
-    wSize = cBuffer.srWindow;
-    return mrb_ary_new_from_values(mrb, 2, [mrb_fixnum_value((mrb_int)(wSize.Bottom - wSize.Top + 1)),
-                                            mrb_fixnum_value((mrb_int)(wSize.Right - wSize.Left + 1))]);
+    w_size = c_buffer.srWindow;
+    mrb_value terminal_size[2];
+    terminal_size[0] = mrb_fixnum_value((mrb_int)(w_size.Bottom - w_size.Top + 1));
+    terminal_size[1] = mrb_fixnum_value((mrb_int)(w_size.Right - w_size.Left + 1));
+    return mrb_ary_new_from_values(mrb, 2, terminal_size);
   #else
     return mrb_nil_value();
   #endif

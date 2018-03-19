@@ -27,7 +27,6 @@ MRuby::Gem::Specification.new('mruby-tty-screen') do |spec|
 
   spec.add_dependency 'mruby-env'
   spec.add_dependency 'mruby-tempfile'
-  spec.add_dependency 'mruby-io-console'
   spec.add_dependency 'mruby-array-ext'
   spec.add_dependency 'mruby-hash-ext'
   spec.add_test_dependency 'mruby-print'
