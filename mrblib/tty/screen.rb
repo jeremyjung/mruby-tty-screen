@@ -112,8 +112,6 @@ module TTY
     # @api private
     def ioctl?(control, buf)
       @output.ioctl(control, buf) >= 0
-    rescue SystemCallError
-      false
     end
     module_function :ioctl?
 
@@ -137,7 +135,7 @@ module TTY
       lines = run_command('tput', 'lines').to_i
       cols  = run_command('tput', 'cols').to_i
       [lines, cols] if nonzero_column?(lines)
-    rescue IOError, SystemCallError
+    rescue IOError
     end
     module_function :size_from_tput
 
@@ -150,7 +148,7 @@ module TTY
       return unless out
       size = out.split.map(&:to_i)
       size if nonzero_column?(size[1])
-    rescue IOError, SystemCallError
+    rescue IOError
     end
     module_function :size_from_stty
 

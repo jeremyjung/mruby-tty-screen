@@ -6,7 +6,9 @@ This is a port of Piotr Murach's [TTY::Screen](https://github.com/piotrmurach/tt
 
 ## Prerequisites:
 
-gcc, bison, and ruby.
+gcc or clang, bison, and ruby.
+
+By default, the `build_config.rb` will attempt to use clang unless you are on windows.
 
 ## Try it out
 
