@@ -1,8 +1,13 @@
 MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
+  if Gem.win_platform?
+    toolchain ENV.fetch('TOOLCHAIN', :gcc)
+  else
+    toolchain ENV.fetch('TOOLCHAIN', :clang)
+  end
+
+  conf.enable_debug
 
   if ARGV.include? 'test'
-    conf.enable_debug
     conf.enable_test
   end
 
