@@ -28,8 +28,8 @@ module TTY
     #
     # @api public
     def size
-      # size = size_from_win_api
-      size = size_from_ioctl
+      size = size_from_win_api
+      size ||= size_from_ioctl
       size ||= size_from_io_console
       size ||= size_from_readline
       size ||= size_from_tput

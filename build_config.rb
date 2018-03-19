@@ -1,5 +1,10 @@
 MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
+  # Build with Visual Studio if on a Windows machine
+  if ENV['VisualStudioVersion'] || ENV['VSINSTALLDIR']
+    toolchain :visualcpp
+  else
+    toolchain ENV.fetch('TOOLCHAIN', :clang)
+  end
 
   if ARGV.include? 'test'
     conf.enable_debug
