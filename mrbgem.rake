@@ -30,7 +30,7 @@ MRuby::Gem::Specification.new('mruby-tty-screen') do |spec|
   spec.add_dependency 'mruby-array-ext'
   spec.add_dependency 'mruby-hash-ext'
   spec.add_dependency 'mruby-io-console' unless Gem.win_platform?
-  spec.add_dependency 'mruby-process' unless Gem.win_platform?
+  spec.add_dependency 'mruby-process', github: 'appPlant/mruby-process'
   spec.add_test_dependency 'mruby-print'
   spec.add_test_dependency 'mruby-mtest'
 end
